@@ -1,0 +1,19 @@
+{
+    "C_Cpp.intelliSenseEngine": "default",
+    "idf.espIdfPathWin": "C:\\Users\\Yukem\\esp\\v5.4\\esp-idf",
+    "idf.pythonInstallPath": "C:\\Users\\Yukem\\.espressif\\tools\\idf-python\\3.11.2\\python.exe",
+    "idf.openOcdConfigs": [
+        "board/esp32s3-builtin.cfg"
+    ],
+    "idf.portWin": "COM13",
+    "idf.toolsPathWin": "C:\\Users\\Yukem\\.espressif",
+    "idf.customExtraVars": {
+        "IDF_TARGET": "esp32s3"
+    },
+    "files.associations": {
+        "esp_netif.h": "c",
+        "esp32-hal-log.h": "c",
+        "asyncudp.h": "c",
+        "format": "c"
+    }
+}
