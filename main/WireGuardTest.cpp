@@ -1,8 +1,9 @@
-#include <WiFi.h>
 #include <HTTPClient.h>
 #include <WireGuard-ESP32.h>
+#include <WiFi.h>
 #include "wgMonitor.h"
 #include "WireGuardConfig.h"
+#include "FreeRTOSConfig.h"
 
 
 
@@ -114,9 +115,18 @@ void wgTask(void *param) {
   WireGuardIni();
   for(;;){
     wgMonitor_getCPUInfo();
-    wgMonitor_getTaskInfo();
+    // wgMonitor_getTaskInfo();
 
-    vTaskDelay(3000 / portTICK_PERIOD_MS);
+    char ptrTaskList[128];
+
+    vTaskList(ptrTaskList);
+    Serial.println(F("**********************************"));
+    Serial.println(F("Task  State   Prio    Stack    Num")); 
+    Serial.println(F("**********************************"));
+    Serial.print(ptrTaskList);
+    Serial.println(F("**********************************"));
+
+    vTaskDelay(5000 / portTICK_PERIOD_MS);
   }
 }
 

@@ -11,7 +11,21 @@ initArduino();
 // Do your own thing
 
 /* Setup */
+boardIni();
 
+wgMonitor_getCPUInfo();
+
+wgMonitor_timeReset();
+WiFiConnect();
+wgMonitor_timeMeasure("WiFiConnect");
+wgMonitor_getCPUInfo();
+
+// WireGuardIni();
+// wgMonitor_timeMeasure("WireGuardIni");
+// wgMonitor_getCPUInfo();
+
+wgTask_Create();
+wgMonitor_timeMeasure("WireGuardIni");
 /* ===== */
 
 /* Loop */
