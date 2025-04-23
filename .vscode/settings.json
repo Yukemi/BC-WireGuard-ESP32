@@ -15,6 +15,7 @@
         "esp32-hal-log.h": "c",
         "asyncudp.h": "c",
         "format": "c",
-        "wireguard.h": "c"
+        "wireguard.h": "c",
+        "esp_netif_net_stack.h": "c"
     }
 }
