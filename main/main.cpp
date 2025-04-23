@@ -1,4 +1,7 @@
 #include "Arduino.h"
+#include "WireGuardTest.h"
+#include "boardIni.h"
+#include "wgMonitor.h"
 
 extern "C" void app_main()
 {

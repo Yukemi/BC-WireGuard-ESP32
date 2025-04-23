@@ -1,3 +1,4 @@
+main/WireGuardConfig.h
 build/
 sdkconfig
 sdkconfig.old
