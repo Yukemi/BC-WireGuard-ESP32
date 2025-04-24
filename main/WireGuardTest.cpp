@@ -5,6 +5,10 @@
 #include "WireGuardConfig.h"
 #include "FreeRTOSConfig.h"
 
+static const char* TAG0 = "WiFiConnect";
+static const char* TAG1 = "WireGuardIni";
+static const char* TAG2 = "WireDebug";
+
 
 
 //========================
@@ -71,29 +75,27 @@ TaskHandle_t wgTask_Handle;
 
 void WiFiConnect() {
   WiFi.begin(ssid, password);
-  Serial.print("[WiFiConnect] Connecting...");
-
+  
   while (WiFi.status() != WL_CONNECTED) {
+    ESP_LOGI(TAG0, "Attempting Connection...");
     delay(1000);
-    Serial.print(".");
   }
-
-  Serial.println("\n[WiFiConnect] Connected");
-    
-  Serial.print("[WiFiConnect] Device IP: ");
-  Serial.println(WiFi.localIP());
-
-  Serial.print("[WiFiConnect] Device IP in tunnel: ");
-  Serial.println(local_ip.toString());
+  
+  ESP_LOGI(TAG0, "Connected");
+  
+  ESP_LOGI(TAG0, "Device IP: %s", WiFi.localIP().toString().c_str());
+  ESP_LOGI(TAG0, "Device IP in tunnel: %s", local_ip.toString().c_str());
 }
 
 
 
 void WireGuardIni() {
-  Serial.println("[WireGuardIni] Initializing");
-
+  ESP_LOGI(TAG1, "Initializing");
+  
   configTime(9 * 60 * 60, 0, "ntp.jst.mfeed.ad.jp", "ntp.nict.jp", "time.google.com");
-
+  ESP_LOGI(TAG2, "configTime done");
+  
+  // Crashes past this point.
   bool wgStatus = wg.begin(
     local_ip,
     private_key,
@@ -101,12 +103,14 @@ void WireGuardIni() {
     public_key,
     wg_endpoint_port
   );
-
+  ESP_LOGI(TAG2, "wg.begin done");
+  
   if (wgStatus != true) {
-    Serial.println("[WireGuardIni] FAILED to initialize");
+    ESP_LOGE(TAG2, "FAILED to initialize");
   }
-
-  Serial.println("[WireGuardIni] Initialized");
+  ESP_LOGI(TAG2, "wgStatus != true done");
+  
+  ESP_LOGI(TAG1, "Initialized");
 }
 
 

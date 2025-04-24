@@ -1,5 +1,9 @@
 #include <Arduino.h>
 
+static const char* TAG = "boardIni";
+
+
+
 void boardIni() {
     Serial.begin(115200);
 
@@ -7,9 +11,9 @@ void boardIni() {
 
     while (!Serial && millis() < 5000 ) //Wait 5 seconds for Serial to initialize
     if (millis() > 5000) {
-        Serial.println("[BoardIni] FAILED to initialize");
+        ESP_LOGE(TAG, "FAILED to initialize");
         break;
     }
-
-    Serial.println("[BoardIni] Initiailized");
+    
+    ESP_LOGI(TAG, "Initialized");
 }

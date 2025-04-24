@@ -17,5 +17,6 @@
         "format": "c",
         "wireguard.h": "c",
         "esp_netif_net_stack.h": "c"
-    }
+    },
+    "idf.flashType": "UART"
 }

@@ -20,12 +20,12 @@ WiFiConnect();
 wgMonitor_timeMeasure("WiFiConnect");
 wgMonitor_getCPUInfo();
 
-// WireGuardIni();
-// wgMonitor_timeMeasure("WireGuardIni");
-// wgMonitor_getCPUInfo();
-
-wgTask_Create();
+WireGuardIni();
 wgMonitor_timeMeasure("WireGuardIni");
+wgMonitor_getCPUInfo();
+
+// wgTask_Create();
+// wgMonitor_timeMeasure("WireGuardIni");
 /* ===== */
 
 /* Loop */
